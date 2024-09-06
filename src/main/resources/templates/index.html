@@ -28,7 +28,7 @@
 								<a class="nav-link" th:href="@{/index}">首页</a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser!=null}">
-								<a class="nav-link position-relative" href="site/letter.html">消息<span class="badge badge-danger">12</span></a>
+								<a class="nav-link position-relative" th:href="@{/letter/list}">消息<span class="badge badge-danger"></span></a>
 							</li>
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser==null}">
 								<a class="nav-link" th:href="@{/register}">注册</a>
@@ -72,7 +72,7 @@
 							<a class="nav-link" href="#">最热</a>
 						</li>
 					</ul>
-					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal">我要发布</button>
+					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal" th:if="${loginUser!=null}">我要发布</button>
 				</div>
 				<!-- 弹出框 -->
 				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
@@ -125,7 +125,7 @@
 						</a>
 						<div class="media-body">
 							<h6 class="mt-0 mb-3">
-								<a href="#" th:utext="${map.post.title}"></a>
+								<a th:href="@{|/discuss/detail/${map.post.id}|}" th:utext="${map.post.title}">标题</a>
 								<span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
 								<span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
 							</h6>
@@ -134,14 +134,14 @@
 								<ul class="d-inline float-right">
 									<li class="d-inline ml-2">赞 11</li>
 									<li class="d-inline ml-2">|</li>
-									<li class="d-inline ml-2">回帖 7</li>
+									<li class="d-inline ml-2">回帖 <i th:text="${map.post.commentCount}">数量</i></li>
 								</ul>
 							</div>
 						</div>						
 					</li>
 				</ul>
 				<!-- 分页 -->
-				<nav class="mt-5" th:if="${page.rows>0}">
+				<nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
 					<ul class="pagination justify-content-center">
 						<li class="page-item">
 							<a class="page-link" th:href="@{${page.path}(current = 1)}">首页</a>
@@ -163,12 +163,12 @@
 		</div>
 
 		<!-- 尾部 -->
-		<footer class="bg-dark" th:fragment="footer">
+		<footer class="bg-dark">
 			<div class="container">
 				<div class="row">
 					<!-- 二维码 -->
 					<div class="col-4 qrcode">
-<!--						<img src="https://uploadfiles.nowcoder.com/app/app_download.png" class="img-thumbnail" style="width:136px;" />-->
+						<img src="https://uploadfiles.nowcoder.com/app/app_download.png" class="img-thumbnail" style="width:136px;" />
 					</div>
 					<!-- 公司信息 -->
 					<div class="col-8 detail-info">
@@ -202,20 +202,20 @@
 						<div class="row">
 							<div class="col">
 								<ul class="nav btn-group-vertical company-info">
-<!--									<li class="nav-item text-white-50">-->
-<!--										公司地址：北京市朝阳区大屯路东金泉时代3-2708北京牛客科技有限公司-->
-<!--									</li>-->
-<!--									<li class="nav-item text-white-50">-->
-<!--										联系方式：010-60728802(电话)&nbsp;&nbsp;&nbsp;&nbsp;admin@nowcoder.com-->
-<!--									</li>-->
-<!--									<li class="nav-item text-white-50">-->
-<!--										牛客科技©2018 All rights reserved-->
-<!--									</li>-->
-<!--									<li class="nav-item text-white-50">-->
-<!--										京ICP备14055008号-4 &nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--										<img src="http://static.nowcoder.com/company/images/res/ghs.png" style="width:18px;" />-->
-<!--										京公网安备 11010502036488号-->
-<!--									</li>-->
+									<li class="nav-item text-white-50">
+										公司地址：北京市朝阳区大屯路东金泉时代3-2708北京牛客科技有限公司
+									</li>
+									<li class="nav-item text-white-50">
+										联系方式：010-60728802(电话)&nbsp;&nbsp;&nbsp;&nbsp;admin@nowcoder.com
+									</li>
+									<li class="nav-item text-white-50">
+										牛客科技©2018 All rights reserved
+									</li>
+									<li class="nav-item text-white-50">
+										京ICP备14055008号-4 &nbsp;&nbsp;&nbsp;&nbsp;
+										<img src="http://static.nowcoder.com/company/images/res/ghs.png" style="width:18px;" />
+										京公网安备 11010502036488号
+									</li>
 								</ul>
 							</div>
 						</div>

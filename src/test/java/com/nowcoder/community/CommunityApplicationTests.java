@@ -67,4 +67,10 @@ class CommunityApplicationTests implements ApplicationContextAware {
 		System.out.println(alphaService);
 		System.out.println(simpleDateFormat);
 	}
+
+	@Test
+	public void number() {
+		int t = 3600 * 24 * 100 * 1000;
+		System.out.println(t);
+	}
 }

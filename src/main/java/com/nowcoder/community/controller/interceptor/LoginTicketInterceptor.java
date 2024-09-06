@@ -25,8 +25,9 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // 从cookie获取凭证
+        // 从cookie中获取凭证
         String ticket = CookieUtil.getValue(request, "ticket");
+
         if (ticket != null) {
             // 查询凭证
             LoginTicket loginTicket = userService.findLoginTicket(ticket);
@@ -38,6 +39,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
                 hostHolder.setUser(user);
             }
         }
+
         return true;
     }
 
