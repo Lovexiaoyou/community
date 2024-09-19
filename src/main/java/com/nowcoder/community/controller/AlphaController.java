@@ -151,7 +151,7 @@ public class AlphaController {
     }
 
     // ajax示例
-    @RequestMapping(path = "/ajax", method = RequestMethod.POST)
+    @RequestMapping(path = "/ajax", method = RequestMethod.GET)
     @ResponseBody
     public String testAjax(String name, int age) {
         System.out.println(name);
