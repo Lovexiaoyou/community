@@ -212,6 +212,7 @@ public class MessageController implements CommunityConstant {
             int unread = messageService.findNoticeUnreadCount(user.getId(), TOPIC_FOLLOW);
             messageVO.put("unread", unread);
         } else {
+            // 可能为空，自己发现的bug
             messageVO.put("message", null);
         }
         model.addAttribute("followNotice", messageVO);

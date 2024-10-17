@@ -37,9 +37,6 @@ public class UserService implements CommunityConstant {
     @Autowired
     private RedisTemplate redisTemplate;
 
-//    @Autowired
-//    private LoginTicketMapper loginTicketMapper;
-
     @Value("${community.path.domain}")
     private String domain;
 
@@ -48,7 +45,6 @@ public class UserService implements CommunityConstant {
 
 
     public User findUserById(int id) {
-//        return userMapper.selectById(id);
         User user = getCache(id);
         if (user == null) {
             user = initCache(id);
