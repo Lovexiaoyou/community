@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@ControllerAdvice(annotations = Controller.class)
+//@ControllerAdvice(annotations = Controller.class)
 public class ExceptionAdvice {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionAdvice.class);
 

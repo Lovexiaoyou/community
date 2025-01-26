@@ -53,7 +53,7 @@ public class CommentController implements CommunityConstant {
             event.setEntityUserId(target.getUserId());
         } else if (comment.getEntityType() == ENTITY_TYPE_COMMENT) {
             Comment target = commentService.findCommentById(comment.getEntityId());
-            event.setEntityUserId(comment.getUserId());
+            event.setEntityUserId(target.getUserId());
         }
         eventProducer.fireEvent(event);
 

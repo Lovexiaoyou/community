@@ -37,7 +37,7 @@
     <select id="selectCommentById" parameterType="Comment">
         select <include refid="selectFields"></include>
         from comment
-        where id = id
+        where id = #{id}
     </select>
 
 </mapper>
