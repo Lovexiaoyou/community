@@ -73,4 +73,18 @@ class CommunityApplicationTests implements ApplicationContextAware {
 		int t = 3600 * 24 * 100 * 1000;
 		System.out.println(t);
 	}
+
+	static boolean flag = false;
+	@Test
+	public void loop() {
+		int cnt = 0;
+		while (!flag) {
+			cnt++;
+			System.out.println(cnt);
+			if (cnt == 100) {
+				flag = true;
+			}
+		}
+		System.out.println("ok");
+	}
 }
